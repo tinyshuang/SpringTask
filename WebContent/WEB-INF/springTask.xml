@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans     
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/task     
+    http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+	<bean id="timeTask" class="hxk.util.Task" />
+	<!-- Spring定时器注解开关 -->
+	<task:annotation-driven />
+	<!-- 此处对于定时时间的配置会被注解中的时间配置覆盖，因此，以注解配置为准 -->
+	<task:scheduled-tasks scheduler="myTask">
+		
+		<!--表示每隔5秒执行一次任务  -->
+		<task:scheduled ref="timeTask" method="time" cron="*/5 * * * * ? " />
+		
+		<!-- 表示每分钟执行一次任务 -->
+		<task:scheduled ref="timeTask" method="min" cron="0 */1 * * * ? " />
+		
+
+	</task:scheduled-tasks>
+
+	<task:scheduler id="myTask" pool-size="5" />
+
+</beans>
