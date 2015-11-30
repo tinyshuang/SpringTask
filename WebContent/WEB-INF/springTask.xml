@@ -12,10 +12,10 @@
 	<task:scheduled-tasks scheduler="myTask">
 		
 		<!--表示每隔5秒执行一次任务  -->
-		<task:scheduled ref="timeTask" method="time" cron="*/5 * * * * ? " />
+		<task:scheduled ref="timeTask" method="time" cron="*/5 * * * * ?" />
 		
 		<!-- 表示每分钟执行一次任务 -->
-		<task:scheduled ref="timeTask" method="min" cron="0 */1 * * * ? " />
+		<task:scheduled ref="timeTask" method="min" cron="0 */1 * * * ?" />
 		
 
 	</task:scheduled-tasks>
